@@ -11,9 +11,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;500;700;800&display=swap" rel="stylesheet">
 
-<!-- استدعاء مكتبة LightBox الرسمية من شركة معاملات -->
-<script src="https://docs.moamalat.net/lightbox/lightbox.js"></script>
-
 <style>
   :root{
     --orange:#e8620a;
@@ -63,7 +60,6 @@
   <nav class="hidden md:flex items-center gap-8 text-sm font-bold text-white/90">
     <a href="#details" class="hover:text-white transition">التفاصيل</a>
     <a href="#process" class="hover:text-white transition">آلية الشراء</a>
-    <a href="#payment-test" class="hover:text-white transition">تجربة الدفع</a>
     <a href="#legal" class="hover:text-white transition">السياسات</a>
     <a href="#contact" class="hover:text-white transition">تواصل</a>
   </nav>
@@ -150,21 +146,6 @@
       <h3 class="text-lg font-extrabold mb-2">مرونة الاستخدام</h3>
       <p class="text-sm text-[var(--ink-soft)] leading-relaxed">اسم عام يتيح تأسيس أي نوع من المشاريع أو المنصات دون التقيد بمجال واحد محدد.</p>
     </div>
-  </div>
-</section>
-
-<!-- ============ Moamalat Payment Integration Section ============ -->
-<section id="payment-test" class="max-w-6xl mx-auto px-6 py-10">
-  <div class="card p-8 md:p-10 text-center">
-    <span class="text-xs font-extrabold tracking-widest uppercase" style="color:var(--orange-deep)">تكامل بوابة الدفع</span>
-    <h3 class="text-2xl font-extrabold my-3">اختبار الدفع الإلكتروني عبر بوابة "معاملات"</h3>
-    <p class="text-sm text-[var(--ink-soft)] max-w-xl mx-auto mb-6">
-      يمكنك تجربة واجهة الدفع الإلكتروني المربوطة بالمنظومة التجريبية لشركة معاملات بضغط الزر أدناه.
-    </p>
-    
-    <button onclick="payWithMoamalat()" class="px-8 py-3.5 rounded-full text-white font-extrabold text-sm transition hover:opacity-90 shadow-lg" style="background:var(--orange-deep)">
-      تجربة الدفع الآن (10.000 د.ل)
-    </button>
   </div>
 </section>
 
@@ -336,33 +317,6 @@
     نطاق معروض للبيع من مالكه الفردي المباشر — جميع الحقوق محفوظة لصاحب النطاق © 2026
   </p>
 </footer>
-
-<!-- JavaScript الخاص بتنفيذ الدفع تجريبياً -->
-<script>
-function payWithMoamalat() {
-  if (typeof Lightbox === 'undefined') {
-    alert("جارٍ تحميل بوابة الدفع، يرجى المحاولة بعد لحظات...");
-    return;
-  }
-  
-  Lightbox.checkout({
-    merchantId: "10081014649",
-    terminalId: "99179395",
-    secureKey: "3a488a69b3f7993476c252f017c485bb",
-    amount: "10000", // المبلغ المالي (10.000 دينار)
-    currency: "LYD",
-    dateTime: new Date().toISOString(),
-    onSuccess: function(response) {
-      alert("تمت عملية الدفع التجريبية بنجاح!");
-      console.log("Success Response:", response);
-    },
-    onError: function(error) {
-      alert("حدث خطأ أثناء تجربة الدفع");
-      console.log("Error Response:", error);
-    }
-  });
-}
-</script>
 
 </body>
 </html>
